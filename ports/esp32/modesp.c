@@ -36,6 +36,7 @@
 #include "py/mperrno.h"
 #include "py/mphal.h"
 #include "drivers/dht/dht.h"
+#include "drivers/i2s/i2s.h"
 #include "modesp.h"
 
 STATIC mp_obj_t esp_osdebug(size_t n_args, const mp_obj_t *args) {
@@ -137,6 +138,17 @@ STATIC const mp_rom_map_elem_t esp_module_globals_table[] = {
 
     { MP_ROM_QSTR(MP_QSTR_neopixel_write), MP_ROM_PTR(&esp_neopixel_write_obj) },
     { MP_ROM_QSTR(MP_QSTR_dht_readinto), MP_ROM_PTR(&dht_readinto_obj) },
+
+    { MP_ROM_QSTR(MP_QSTR_mp3_find_sync_word), MP_ROM_PTR(&mp3_find_sync_word_obj) },
+    { MP_ROM_QSTR(MP_QSTR_mp3_get_next_sample_rate), MP_ROM_PTR(&mp3_get_next_sample_rate_obj) },
+    { MP_ROM_QSTR(MP_QSTR_mp3_alloc_out_buffer), MP_ROM_PTR(&mp3_alloc_out_buffer_obj) },
+    { MP_ROM_QSTR(MP_QSTR_mp3_get_frame_length), MP_ROM_PTR(&mp3_get_frame_length_obj) },
+
+    { MP_ROM_QSTR(MP_QSTR_i2s_init), MP_ROM_PTR(&i2s_init_obj) },
+    { MP_ROM_QSTR(MP_QSTR_i2s_set_sample_rate), MP_ROM_PTR(&i2s_set_sample_rate_obj) },
+    { MP_ROM_QSTR(MP_QSTR_i2s_send_mp3), MP_ROM_PTR(&i2s_send_mp3_obj) },
+    { MP_ROM_QSTR(MP_QSTR_i2s_send), MP_ROM_PTR(&i2s_send_obj) },
+    { MP_ROM_QSTR(MP_QSTR_i2s_term), MP_ROM_PTR(&i2s_term_obj) },
 
     // Constants for second arg of osdebug()
     { MP_ROM_QSTR(MP_QSTR_LOG_NONE), MP_ROM_INT((mp_uint_t)ESP_LOG_NONE)},
