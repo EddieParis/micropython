@@ -143,6 +143,8 @@ STATIC const mp_rom_map_elem_t esp_module_globals_table[] = {
     { MP_ROM_QSTR(MP_QSTR_mp3_get_next_sample_rate), MP_ROM_PTR(&mp3_get_next_sample_rate_obj) },
     { MP_ROM_QSTR(MP_QSTR_mp3_alloc_out_buffer), MP_ROM_PTR(&mp3_alloc_out_buffer_obj) },
     { MP_ROM_QSTR(MP_QSTR_mp3_get_frame_length), MP_ROM_PTR(&mp3_get_frame_length_obj) },
+    { MP_ROM_QSTR(MP_QSTR_mp3_get_output_samples_count), MP_ROM_PTR(&mp3_get_output_samples_count_obj) },
+    { MP_ROM_QSTR(MP_QSTR_mp3_decode_into), MP_ROM_PTR(&mp3_decode_into_obj) },
 
     { MP_ROM_QSTR(MP_QSTR_i2s_init), MP_ROM_PTR(&i2s_init_obj) },
     { MP_ROM_QSTR(MP_QSTR_i2s_set_sample_rate), MP_ROM_PTR(&i2s_set_sample_rate_obj) },
