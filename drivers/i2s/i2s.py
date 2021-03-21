@@ -1,6 +1,6 @@
 #from esp import
 
-from esp import mp3_alloc_out_buffer
+# ~ from esp import mp3_alloc_out_buffer
 from esp import mp3_get_next_sample_rate
 from esp import mp3_find_sync_word
 
