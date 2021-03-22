@@ -29,6 +29,8 @@ set(MICROPY_SOURCE_LIB
 set(MICROPY_SOURCE_DRIVERS
     ${MICROPY_DIR}/drivers/bus/softspi.c
     ${MICROPY_DIR}/drivers/dht/dht.c
+    ${MICROPY_DIR}/drivers/i2s/i2s.c
+    ${MICROPY_DIR}/drivers/i2s/mp3_decoder.cpp
 )
 
 set(MICROPY_SOURCE_PORT

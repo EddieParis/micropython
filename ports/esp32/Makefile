@@ -11,8 +11,6 @@ BUILD ?= build-$(BOARD)
 # Device serial settings.
 PORT ?= /dev/ttyUSB0
 BAUD ?= 460800
-	i2s/i2s.c \
-	i2s/mp3_decoder.c \
 
 PYTHON ?= python3
 

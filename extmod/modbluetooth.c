@@ -111,7 +111,7 @@ STATIC mp_obj_t bluetooth_uuid_make_new(const mp_obj_type_t *type, size_t n_args
     } else {
         mp_buffer_info_t uuid_bufinfo = {0};
         mp_get_buffer_raise(all_args[0], &uuid_bufinfo, MP_BUFFER_READ);
-        if (uuid_bufinfo.len == 2 || uuid_bufinfo.len == 4 || uuid_bufinfo.len == 16) {
+        if (uuid_bufinfo.len == 2 || uuid_bufinfo.len == 16) {
             // Bytes data -- infer UUID type from length and copy data.
             self->type = uuid_bufinfo.len;
             memcpy(self->data, uuid_bufinfo.buf, self->type);

@@ -21,6 +21,9 @@ enum {
     ERR_UNKNOWN =                  -9999
 };
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 // prototypes
 bool MP3Decoder_AllocateBuffers(void);
 void MP3Decoder_FreeBuffers();
@@ -34,5 +37,8 @@ int  MP3GetBitsPerSample();
 int  MP3GetBitrate();
 int  MP3GetOutputSamps();
 int  MP3FrameLength();
+#ifdef __cplusplus
+}
+#endif
 
 #endif // MICROPY_INCLUDED_DRIVERS_I2S_MP3_DECODER_H

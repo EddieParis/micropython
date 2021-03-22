@@ -668,12 +668,12 @@ const uint32_t m_dcttab[48] PROGMEM = { // faster in ROM
     /* second pass */
      m_COS2_0,  m_COS2_3,  m_COS3_0,   /* 31, 29, 31 */
      m_COS2_1,  m_COS2_2,  m_COS3_1,   /* 31, 31, 30 */
-    -m_COS2_0, -m_COS2_3,  m_COS3_0,   /* 31, 29, 31 */
-    -m_COS2_1, -m_COS2_2,  m_COS3_1,   /* 31, 31, 30 */
+    (uint32_t)-m_COS2_0, (uint32_t)-m_COS2_3,  m_COS3_0,   /* 31, 29, 31 */
+    (uint32_t)-m_COS2_1, (uint32_t)-m_COS2_2,  m_COS3_1,   /* 31, 31, 30 */
      m_COS2_0,  m_COS2_3,  m_COS3_0,   /* 31, 29, 31 */
      m_COS2_1,  m_COS2_2,  m_COS3_1,   /* 31, 31, 30 */
-    -m_COS2_0, -m_COS2_3,  m_COS3_0,   /* 31, 29, 31 */
-    -m_COS2_1, -m_COS2_2,  m_COS3_1,   /* 31, 31, 30 */
+    (uint32_t)-m_COS2_0, (uint32_t)-m_COS2_3,  m_COS3_0,   /* 31, 29, 31 */
+    (uint32_t)-m_COS2_1, (uint32_t)-m_COS2_2,  m_COS3_1,   /* 31, 31, 30 */
 };
 
 /***********************************************************************************************************************
@@ -2098,8 +2098,8 @@ int MP3Dequantize(int gr){
 
     /* adjust guard bit count and nonZeroBound if we did any stereo processing */
     if (m_FrameHeader->modeExt) {
-        m_HuffmanInfo->gb[0] = CLZ(mOut[0]) - 1;
-        m_HuffmanInfo->gb[1] = CLZ(mOut[1]) - 1;
+        m_HuffmanInfo->gb[0] = MY_CLZ(mOut[0]) - 1;
+        m_HuffmanInfo->gb[1] = MY_CLZ(mOut[1]) - 1;
         nSamps = (m_HuffmanInfo->nonZeroBound[0] > m_HuffmanInfo->nonZeroBound[1] ?
                                                        m_HuffmanInfo->nonZeroBound[0] : m_HuffmanInfo->nonZeroBound[1]);
         m_HuffmanInfo->nonZeroBound[0] = nSamps;
@@ -2306,7 +2306,7 @@ int DequantChannel(int *sampleBuf, int *workBuf, int *nonZeroBound,  SideInfoSub
 
     /* early exit if no short blocks */
     if (cbStartS >= 12)
-        return CLZ(gbMask) - 1;
+        return MY_CLZ(gbMask) - 1;
 
     /* short blocks */
     cbMax[2] = cbMax[1] = cbMax[0] = cbStartS;
@@ -2361,7 +2361,7 @@ int DequantChannel(int *sampleBuf, int *workBuf, int *nonZeroBound,  SideInfoSub
     cbi->cbEndSMax = (cbi->cbEndSMax > cbMax[1] ? cbi->cbEndSMax : cbMax[1]);
     cbi->cbEndSMax = (cbi->cbEndSMax > cbMax[2] ? cbi->cbEndSMax : cbMax[2]);
 
-    return CLZ(gbMask) - 1;
+    return MY_CLZ(gbMask) - 1;
 }
 
 /***********************************************************************************************************************
@@ -3379,7 +3379,7 @@ int HybridTransform(int *xCurr, int *xPrev, int y[m_BLOCK_SIZE][m_NBANDS], SideI
             y[j][i] = 0;
     }
 
-    bc->gbOut = CLZ(mOut) - 1;
+    bc->gbOut = MY_CLZ(mOut) - 1;
 
     return nBlocksOut;
 }
